@@ -155,6 +155,7 @@ document.addEventListener('DOMContentLoaded', function() {
         form.reset();
         foodValue.textContent = '5';
         foodSlider.value = 5;
+        document.querySelectorAll('.option.selected').forEach(opt => opt.classList.remove('selected'));
         // Show form, hide result
         form.style.display = 'block';
         resultSection.style.display = 'none';
@@ -162,12 +163,26 @@ document.addEventListener('DOMContentLoaded', function() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Add some fun effects to options
-    const options = document.querySelectorAll('.option');
-    options.forEach(opt => {
-        opt.addEventListener('click', function() {
-            options.forEach(o => o.style.background = '#f8f9fa');
-            this.style.background = '#ffeaea';
+    // Add persistent option selection styling per question group
+    document.querySelectorAll('.question-card .options').forEach(group => {
+        group.addEventListener('click', function(event) {
+            const clickedOption = event.target.closest('label.option');
+            if (!clickedOption) return;
+            group.querySelectorAll('label.option').forEach(o => o.classList.remove('selected'));
+            clickedOption.classList.add('selected');
+
+            const input = clickedOption.querySelector('input[type="radio"]');
+            if (input) input.checked = true;
+        });
+    });
+
+    document.querySelectorAll('.option input[type="radio"]').forEach(input => {
+        input.addEventListener('change', function() {
+            const group = this.closest('.options');
+            if (!group) return;
+            group.querySelectorAll('label.option').forEach(o => o.classList.remove('selected'));
+            const label = this.closest('label.option');
+            if (label) label.classList.add('selected');
         });
     });
 

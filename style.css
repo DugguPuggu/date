@@ -160,6 +160,11 @@ h1 {
     border-color: #6a11cb;
 }
 
+.option.selected {
+    background: #ffeaea;
+    border-color: #ff6b6b;
+}
+
 .option input {
     display: none;
 }

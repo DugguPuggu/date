@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Date Review - Let's Have Fun! 😄</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Landing Page -->
+        <section id="landingPage" class="landing-page">
+            <div class="landing-content">
+                <div class="heart-emoji">💖</div>
+                <h1 class="landing-title">Hey Beautiful! 😊</h1>
+                <p class="landing-subtitle">Welcome to our first date review! I'd love to hear your thoughts about our time together.</p>
+                <p class="landing-description">This is a fun, lighthearted way to share what you enjoyed and what we could improve. No pressure, just honest and funny feedback!</p>
+                <button id="startSurveyBtn" class="start-survey-btn">
+                    <i class="fas fa-play-circle"></i> Start Survey
+                </button>
+                <div class="landing-hint">
+                    <i class="fas fa-lightbulb"></i> It'll only take a few minutes, and you might even get a laugh!
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Survey Page (hidden initially) -->
+        <section id="surveyPage" style="display: none;">
+            <header>
+                <h1><i class="fas fa-calendar-alt"></i> First Date Review <i class="fas fa-smile"></i></h1>
+                <p class="subtitle">Hey! Let's rate our first date in a fun way. Be honest, be funny! 😄</p>
+            </header>
+
+            <main>
+                <form id="dateReviewForm">
+                <div class="question-card">
+                    <h2><i class="fas fa-star"></i> Overall, how would you rate our date?</h2>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="rating" value="5">
+                            <span class="emoji">🤩</span> 5 - Absolutely fantastic!
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="rating" value="4">
+                            <span class="emoji">😊</span> 4 - Really great!
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="rating" value="3">
+                            <span class="emoji">🙂</span> 3 - Good, but room for improvement.
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="rating" value="2">
+                            <span class="emoji">😐</span> 2 - Meh, it was okay.
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="rating" value="1">
+                            <span class="emoji">😬</span> 1 - Let's pretend it never happened.
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <h2><i class="fas fa-laugh-beam"></i> What was the funniest moment?</h2>
+                    <textarea id="funnyMoment" placeholder="Tell me the moment that made you laugh the hardest..."></textarea>
+                </div>
+
+                <!-- New Walk Question -->
+                <div class="question-card">
+                    <h2><i class="fas fa-walking"></i> How was the walk? 🚶‍♀️🚶‍♂️</h2>
+                    <div class="options">
+
+                        <label class="option">
+                            <input type="radio" name="walk" value="funny">
+                            <span class="emoji">😂</span> Funny - We looked like penguins waddling
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="walk" value="awkward">
+                            <span class="emoji">😅</span> Awkward - Silent but comfortable
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="walk" value="energetic">
+                            <span class="emoji">⚡</span> Energetic - You almost ran me over!
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="walk" value="perfect">
+                            <span class="emoji">✨</span> Perfect - Could have walked forever
+                        </label>
+
+                        <label class="option">
+                            <input type="radio" name="walk" value="Areyyy">
+                            <span class="emoji">😳</span> Areyyy
+                        </label>
+                    </div>
+                </div>
+
+                <!-- New Cafe Experience Question -->
+                <div class="question-card">
+                    <h2><i class="fas fa-coffee"></i> How was the cafe experience? ☕</h2>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="cafe" value="cozy">
+                            <span class="emoji">🏠</span> Cozy - Felt like we were in a rom-com
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="cafe" value="funny">
+                            <span class="emoji">🤣</span> Funny - Spilled Hot Choclate everywhere!
+                        </label>
+
+                        <label class="option">
+                            <input type="radio" name="cafe" value="chaotic">
+                            <span class="emoji">🌀</span> Chaotic - Too many people, but fun!
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="cafe" value="delicious">
+                            <span class="emoji">🍰</span> Delicious - That cake was heavenly!
+                        </label>
+
+                        <label class="option">
+                            <input type="radio" name="cafe" value="Areyyy">
+                            <span class="emoji">😳</span> Areyyy
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <h2><i class="fas fa-laugh-beam"></i> What was the weirdest moment?</h2>
+                    <textarea id="weirdMoment" placeholder="Tell me the moment that made you awkward..."></textarea>
+                </div>
+
+                <div class="question-card">
+                    <h2><i class="fas fa-utensils"></i> How tasty was the food? (Slide to rate)</h2>
+                    <div class="slider-container">
+                        <span class="emoji">🤢</span>
+                        <input type="range" id="foodRating" min="0" max="10" value="5" class="slider">
+                        <span class="emoji">🤤</span>
+                        <div class="slider-value">Selected: <span id="foodValue">5</span>/10</div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <h2><i class="fas fa-film"></i> If our date were a movie genre, what would it be?</h2>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="genre" value="romcom">
+                            <span class="emoji">😊</span> Rom‑Com (sweet & funny)
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="genre" value="action">
+                            <span class="emoji">💥</span> Action (non‑stop excitement!)
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="genre" value="horror">
+                            <span class="emoji">👻</span> Horror (awkward moments galore)
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="genre" value="fantasy">
+                            <span class="emoji">🧚</span> Fantasy (felt like a dream)
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="genre" value="Areyyy">
+                            <span class="emoji">😳</span> Areyyy
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <h2><i class="fas fa-lightbulb"></i> What could I have done better?</h2>
+                    <textarea id="improvement" placeholder="Any suggestions for improvement? 😅"></textarea>
+                </div>
+
+                <div class="question-card">
+                    <h2><i class="fas fa-calendar-check"></i> Should we go on another date?</h2>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="anotherDate" value="yes">
+                            <span class="emoji">✅</span> Yes, absolutely!
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="anotherDate" value="maybe">
+                            <span class="emoji">🤔</span> Maybe, if you promise to behave.
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="anotherDate" value="no">
+                            <span class="emoji">❌</span> No, I need a break from your jokes.
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="anotherDate" value="areyyy">
+                            <span class="emoji">😳</span> Areyyy
+                        </label>
+                    </div>
+                </div>
+
+                <div class="submit-section">
+                    <button type="submit" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i> Submit My Review
+                    </button>
+                    <p class="hint">Your answers will generate a custom "Date Report Card"!</p>
+                </div>
+            </form>
+
+            <section class="result" id="resultSection" style="display: none;">
+                <h2><i class="fas fa-chart-line"></i> Your Date Report Card</h2>
+                <div class="report-card">
+                    <div class="report-item">
+                        <span class="label">Overall Rating:</span>
+                        <span class="value" id="reportRating">—</span>
+                    </div>
+                    <div class="report-item">
+                        <span class="label">Funniest Moment:</span>
+                        <span class="value" id="reportFunny">—</span>
+                    </div>
+                    <div class="report-item">
+                        <span class="label">Weirdest Moment:</span>
+                        <span class="value" id="reportWeird">—</span>
+                    </div>
+                    <div class="report-item">
+                        <span class="label">Food Score:</span>
+                        <span class="value" id="reportFood">—</span>
+                    </div>
+                    <div class="report-item">
+                        <span class="label">The Walk:</span>
+                        <span class="value" id="reportWalk">—</span>
+                    </div>
+                    <div class="report-item">
+                        <span class="label">Cafe Experience:</span>
+                        <span class="value" id="reportCafe">—</span>
+                    </div>
+                    <div class="report-item">
+                        <span class="label">Movie Genre:</span>
+                        <span class="value" id="reportGenre">—</span>
+                    </div>
+                    <div class="report-item">
+                        <span class="label">Improvement Needed:</span>
+                        <span class="value" id="reportImprovement">—</span>
+                    </div>
+                    <div class="report-item">
+                        <span class="label">Another Date?</span>
+                        <span class="value" id="reportAnother">—</span>
+                    </div>
+                </div>
+                <div class="final-message">
+                    <p id="customMessage">Thanks for sharing! Hope you had fun! 😄</p>
+                    <div class="action-buttons">
+                        <button id="screenshotBtn" class="action-btn">
+                            <i class="fas fa-camera"></i> Take Screenshot
+                        </button>
+                        <button id="pdfBtn" class="action-btn">
+                            <i class="fas fa-file-pdf"></i> Save as PDF
+                        </button>
+                    </div>
+                    <p class="share-message">
+                        Please share it with Durga – he's eagerly waiting for this! 😊
+                    </p>
+                    <button id="resetBtn"><i class="fas fa-redo"></i> Review Again</button>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Made with <i class="fas fa-laugh-beam" style="color: #6a11cb;"></i> for a fun first date review!</p>
+            <p class="small">This website is 100% joke‑proof. No answers will be used against you (maybe).</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
